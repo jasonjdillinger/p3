@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: rideshare
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+server:
+  port: 9001
+management:
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    mappings:
+      enabled: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+---
+spring:
+  profiles: dev
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
